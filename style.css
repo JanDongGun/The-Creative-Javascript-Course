@@ -1,0 +1,109 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  font-family: "Poppins", sans-serif;
+  color: white;
+  min-height: 100vh;
+}
+
+header {
+  font-size: 1.5rem;
+  margin: 7rem 0 2rem 0;
+}
+
+header,
+form {
+  min-width: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form input,
+form button {
+  padding: 0.5rem;
+  font-size: 2rem;
+  border: none;
+  background: white;
+}
+
+form input {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.todo-button {
+  color: #fda085;
+  background: white;
+  cursor: pointer;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.todo-button .fas {
+  transition: all 0.3s;
+}
+
+.todo-button .fas:hover {
+  transform: scale(1.15);
+}
+
+.todo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-list {
+  list-style: none;
+  min-width: 30%;
+}
+
+.todo {
+  margin: 1rem;
+  background-color: white;
+  color: black;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 1rem;
+  transition: all 0.5s ease;
+}
+
+.todo:first-child {
+  margin-top: 5rem;
+}
+
+.complete-btn {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.complete-btn,
+.trash-btn {
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.fa-trash,
+.fa-check {
+  pointer-events: none;
+}
+
+.completed {
+  text-decoration: line-through;
+  font-style: italic;
+}
+
+.fall {
+  transform: translateY(8rem) rotateZ(20deg);
+  opacity: 0;
+}
