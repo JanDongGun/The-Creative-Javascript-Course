@@ -111,3 +111,12 @@ select {
   font-size: 1rem;
   color: rgb(88, 88, 88);
 }
+
+@keyframes playTrack {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
