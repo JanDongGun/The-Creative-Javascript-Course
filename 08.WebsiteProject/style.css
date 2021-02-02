@@ -44,6 +44,7 @@ body {
   align-items: center;
   color: white;
   background: #17181a;
+  overflow: hidden;
 }
 
 .hero-desc {
@@ -61,10 +62,11 @@ body {
   position: relative;
   flex: 1;
   flex-basis: 25rem;
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 .hero-img img {
+  transform: translateY(5px);
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -150,10 +152,10 @@ body {
 .reveal-text {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 150%;
   background: #17181a;
   left: 0;
-  top: 0;
+  top: -15%;
 }
 
 .cursor {
@@ -162,4 +164,8 @@ body {
   border: 2px solid white;
   border-radius: 50%;
   position: absolute;
+}
+
+.scrollmagic-pin-spacer {
+  position: static !important;
 }
