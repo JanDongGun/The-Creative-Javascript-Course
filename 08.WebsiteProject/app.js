@@ -60,8 +60,9 @@ function animateSlides() {
   });
 }
 
-let mouse = document.querySelector(".cursor");
-let mouseText = mouse.querySelector("span");
+const mouse = document.querySelector(".cursor");
+const mouseText = mouse.querySelector("span");
+const burger = document.querySelector(".burger");
 
 function cursor(e) {
   mouse.style.top = e.pageY + "px";
@@ -88,7 +89,26 @@ function activeCursor(e) {
   }
 }
 
+function navToggle() {
+  if (!burger.classList.contains("active")) {
+    burger.classList.add("active");
+    gsap.to(".line1", 0.5, { rotate: "45", y: 5, background: "black" });
+    gsap.to(".line2", 0.5, { rotate: "-45", y: -5, background: "black" });
+    gsap.to("#logo", 1, { color: "black" });
+    gsap.to(".nav-bar", 1, { clipPath: "circle(2500px at 100% -10%)" });
+    document.body.classList.add("hide");
+  } else {
+    burger.classList.remove("active");
+    gsap.to(".line1", 0.5, { rotate: "0", y: 0, background: "white" });
+    gsap.to(".line2", 0.5, { rotate: "0", y: 0, background: "white" });
+    gsap.to("#logo", 1, { color: "white" });
+    gsap.to(".nav-bar", 1, { clipPath: "circle(50px at 100% -10%)" });
+    document.body.classList.remove("hide");
+  }
+}
+
 window.addEventListener("mousemove", cursor);
 window.addEventListener("mouseover", activeCursor);
+burger.addEventListener("click", navToggle);
 
 animateSlides();
