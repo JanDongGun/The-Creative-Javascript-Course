@@ -1,7 +1,7 @@
 let controller;
 let slideScene;
 let pageScene;
-
+let detailScene;
 function animateSlides() {
   // Init controller
   controller = new ScrollMagic.Controller();
@@ -127,6 +127,11 @@ barba.init({
       namespace: "fashion",
       beforeEnter() {
         logo.href = "../index.html";
+        detailAnimation();
+      },
+      beforeLeave() {
+        controller.destroy();
+        detailScene.destroy();
       },
     },
   ],
@@ -162,6 +167,33 @@ barba.init({
     },
   ],
 });
+
+function detailAnimation() {
+  controller = new ScrollMagic.Controller();
+  const slides = document.querySelectorAll(".detail-slide");
+  slides.forEach((slide, index, slides) => {
+    const slideT1 = gsap.timeline({ defaults: { duration: 1 } });
+    let nextSlide = slides.length - 1 === index ? "end" : slides[index + 1];
+    const nextImg = nextSlide.querySelector("img");
+    slideT1.fromTo(slide, { opacity: 1 }, { opacity: 0 });
+    slideT1.fromTo(nextSlide, { opacity: 0 }, { opacity: 1 }, "-=1");
+    slideT1.fromTo(nextImg, { x: "50%" }, { x: "0%" });
+    // Scene
+    detailScene = new ScrollMagic.Scene({
+      triggerElement: slide,
+      duration: "100%",
+      triggerHook: 0,
+    })
+      .setPin(slide, { pushFollowers: false })
+      .setTween(slideT1)
+      .addIndicators({
+        colorStart: "white",
+        colorTrigger: "white",
+        name: "details",
+      })
+      .addTo(controller);
+  });
+}
 
 window.addEventListener("mousemove", cursor);
 window.addEventListener("mouseover", activeCursor);
