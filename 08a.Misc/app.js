@@ -15,6 +15,20 @@
 
 // IFFE
 
-(function hello(name) {
-  console.log("hello " + name);
-})("Dong gon");
+// (function hello(name) {
+//   console.log("hello " + name);
+// })("Dong gon");
+
+// Closures
+
+function user() {
+  const name = "gon";
+  const displayName = function (greeting) {
+    console.log(greeting + name);
+  };
+  return displayName;
+}
+
+const say = user();
+
+say("hello");
